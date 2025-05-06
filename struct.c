@@ -1,27 +1,33 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-struct Animal {
+typedef struct {
     char nome[50];
-    char nomeDono[50];
     int idade;
-};
+    float nota;
+} Aluno;
 
-
-int main()
-{
-    struct Animal pet;
+int main(){
+    Aluno alunos[2];
+    int maiorNota = 0;
     
-    printf("Digite o nome:\n");
-    scanf("%49s", pet.nome);
-
-    printf("Digite o nome do dono:\n");
-    scanf("%49s", pet.nomeDono);
     
-    printf("Digite a idade:\n");
-    scanf("%d", &pet.idade);
+    for(int i = 0; i < 2; i++){
+        printf("Digite o nome do aluno %d: ", i + 1);
+        scanf(" %[^\n]", alunos[i].nome);
+        
+        printf("Digite a idade do aluno %d: ", i + 1);
+        scanf("%d", &alunos[i].idade);
 
-    printf("O nome eh: %s\nO nome do dono eh: %s\nA idade do pet eh: %d", 
-    pet.nome, pet.nomeDono, pet.idade);
-
+        printf("Digite a nota do aluno %d: ", i + 1);
+        scanf("%f", &alunos[i].nota);
+    }
+    
+    if (alunos[1].nota > alunos[0].nota) {
+            maiorNota = 1;
+    }
+    
+    printf("\nAluno com maior nota: %s\n", alunos[maiorNota].nome);
+    
     return 0;
 }
